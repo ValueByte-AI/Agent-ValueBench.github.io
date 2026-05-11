@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Agent-ValueBench</title>
+    <meta
+      name="description"
+      content="Agent-ValueBench is a comprehensive benchmark for evaluating the underlying values of autonomous agents across executable environments and value-conflict tasks."
+    >
+    <meta property="og:title" content="Agent-ValueBench">
+    <meta
+      property="og:description"
+      content="394 executable environments, 4,335 value-conflict tasks, 28 value systems, and 332 dimensions for evaluating agent values."
+    >
+    <meta property="og:image" content="assets/brand/agent-valuebench-wordmark.svg">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="assets/brand/favicon.png">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body id="top">
+    <header class="site-header">
+      <a class="brand-mark" href="#top" aria-label="Agent-ValueBench home">
+        <img src="assets/brand/favicon.png" alt="" aria-hidden="true">
+        <span>Agent-ValueBench</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="#overview">Overview</a>
+        <a href="#motivation">Motivation</a>
+        <a href="#construction">Construction</a>
+        <a href="#questions">Research Questions</a>
+        <a href="#results">Results</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" id="overview" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">A benchmark for evaluating agent values</p>
+          <h1 id="hero-title">What values do agents exhibit?</h1>
+          <p class="hero-lede">
+            Agent-ValueBench is the first comprehensive benchmark dedicated to evaluating the underlying values of autonomous agents. It features 394 executable environments across 16 domains, offering 4,335 value-conflict tasks that span 28 value systems and 332 dimensions.
+          </p>
+          <div class="hero-actions" aria-label="Page shortcuts">
+            <a class="button primary" href="#results">View Results</a>
+            <a class="button secondary" href="#construction">See Benchmark Design</a>
+          </div>
+        </div>
+        <div class="hero-emblem" aria-label="Agent-ValueBench logo">
+          <img src="assets/brand/agent-valuebench-wordmark.svg" alt="Agent-ValueBench logo">
+        </div>
+      </section>
+
+      <section class="stats-section" aria-label="Benchmark scale">
+        <div class="stat-card">
+          <span class="stat-icon" aria-hidden="true">✦</span>
+          <span class="stat-number">394</span>
+          <span class="stat-label">Executable environments</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-icon" aria-hidden="true">⚔</span>
+          <span class="stat-number">4,335</span>
+          <span class="stat-label">Value-conflict tasks</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-icon" aria-hidden="true">◈</span>
+          <span class="stat-number">28</span>
+          <span class="stat-label">Value systems</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-icon" aria-hidden="true">☉</span>
+          <span class="stat-number">332</span>
+          <span class="stat-label">System-scoped dimensions</span>
+        </div>
+      </section>
+
+      <section class="motivation-section" id="motivation" aria-labelledby="motivation-title">
+        <div class="motivation-heading">
+          <p class="eyebrow">Motivation</p>
+          <h2 id="motivation-title">Why agent values need their own benchmark</h2>
+          <div class="motivation-points" aria-label="Motivation points">
+            <p><span>1</span> Agent Values Are Not Identical to LLM Values.</p>
+            <p><span>2</span> Agent Value Evaluation Is Absent and Non-Trivial.</p>
+          </div>
+        </div>
+        <div class="motivation-grid">
+          <figure class="motivation-figure">
+            <img src="assets/motivation/llm-agent-modality-comparison.png" alt="Comparison of LLM and agent value priorities with a detailed case study.">
+            <figcaption>
+              Comparison of LLM and agent modalities sharing GPT-5.4. (Upper) Contrasting value priorities. (Lower) A detailed case study.
+            </figcaption>
+          </figure>
+          <figure class="motivation-figure">
+            <img src="assets/motivation/value-tide-metaphor.png" alt="Illustration of the Value Tide metaphor.">
+            <figcaption>Illustration of the Value Tide metaphor.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="scroll-section" id="construction" aria-labelledby="construction-title">
+        <div class="section-heading">
+          <p class="eyebrow">Benchmark construction</p>
+          <h2 id="construction-title">Automated Synthesis with Expert-in-the-Loop Curation</h2>
+          <p>
+            Agent-ValueBench’s benchmark is built through an automated pipeline that jointly synthesizes executable environments, value-conflict tasks, and trajectory-level rubrics, with each stage capped by per-instance expert-in-the-loop refinement.
+          </p>
+        </div>
+
+        <div class="process-grid">
+          <article class="process-card">
+            <span class="process-index">I</span>
+            <h3>Environment Construction</h3>
+            <p>
+              We construct realistic, cross-domain, and executable agent environments through automated discovery, synthesis, evolution, and expert-in-the-loop curation.
+            </p>
+          </article>
+          <article class="process-card">
+            <span class="process-index">II</span>
+            <h3>Task construction</h3>
+            <p>
+              We generate implicit value-conflict tasks grounded in psychological value systems, each paired with pole-aligned golden trajectories and behavioral checkpoints.
+            </p>
+          </article>
+          <article class="process-card">
+            <span class="process-index">III</span>
+            <h3>Rubric-based Evaluation</h3>
+            <p>
+              We evaluate agents at the trajectory level using behaviorally anchored, task-specific rubrics synthesized from a psychology-grounded meta-rubric and applied by an LLM-as-Judge.
+            </p>
+          </article>
+        </div>
+
+        <figure class="overview-figure">
+          <img src="assets/overview/agent-valuebench-overview.png" alt="Overview diagram of the Agent-ValueBench construction and evaluation pipeline.">
+          <figcaption>Overview of Agent-ValueBench.</figcaption>
+        </figure>
+      </section>
+
+      <section class="rq-section" id="questions" aria-labelledby="rq-title">
+        <div class="rq-panel">
+          <div class="rq-heading">
+            <p class="eyebrow">Research questions</p>
+            <h2 id="rq-title">What RQs does Agent-ValueBench answer?</h2>
+          </div>
+          <p class="rq-intro">
+            We conduct a large-scale empirical study to answer the following research questions:
+          </p>
+          <div class="rq-grid" aria-label="Research questions">
+            <article class="rq-item">
+              <span>RQ1</span>
+              <p>How do state-of-the-art agents differ in their value profiles?</p>
+            </article>
+            <article class="rq-item">
+              <span>RQ2</span>
+              <p>To what extent are agent value profiles invariant across harnesses?</p>
+            </article>
+            <article class="rq-item">
+              <span>RQ3</span>
+              <p>How amenable are agent values to deliberate steering?</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="results-section" id="results" aria-labelledby="results-title">
+        <div class="section-heading compact">
+          <p class="eyebrow">Empirical findings</p>
+          <h2 id="results-title">RQ1: Agent Values Exhibit a Value Tide 🌊</h2>
+          <p class="results-takeaway">
+            <strong>Takeaway ❶</strong> Agent values exhibit a Value Tide 🌊: across models, adherence levels and priority currents converge into a structured shared profile, while localized counter-currents reveal interpretable model-specific drift beneath this macroscopic homogeneity.
+          </p>
+        </div>
+
+        <figure class="result-figure model-map-figure">
+          <img src="assets/results/model-value-map.png" alt="Heatmaps showing value adherence and value priority for 14 models on MFT08, HEXACO, and PVQ40.">
+          <figcaption>
+            Value adherence (Upper) and value priority (Lower) of 14 models on MFT08, HEXACO, and PVQ40.
+          </figcaption>
+        </figure>
+
+        <div class="section-heading compact finding-heading">
+          <h2>RQ2: The Tide Bends Under Harness Pull 🌕<br>&amp; RQ3: The Tide Bends to Deliberate Steering 🧭</h2>
+          <p class="results-takeaway takeaway-rq2">
+            <strong>Takeaway ❷</strong> Under harness pull 🌕, the value tide bends non-additively in model-specific ways, signaling that the locus of agent alignment is shifting from model alignment toward harness alignment.
+          </p>
+          <p class="results-takeaway takeaway-rq3">
+            <strong>Takeaway ❸</strong> The skill helm exerts a deeper and more reliable pull on the value tide than the prompt helm, signaling that the lever of agent steering is shifting from prompt steering toward skill steering.
+          </p>
+        </div>
+
+        <figure class="result-figure model-map-figure">
+          <img src="assets/results/harness-prompt-skill-study.png" alt="Line charts comparing value adherence and value priority under ReAct, Claude Code, Codex, and OpenClaw harnesses.">
+          <figcaption>
+            Comparison of three representative models across four harnesses under unsteered, promptsteered, and skill-steered setting.
+          </figcaption>
+        </figure>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-rule" aria-hidden="true"></div>
+      <p>Agent-ValueBench</p>
+      <p class="footer-note">A benchmark for evaluating agent values</p>
+    </footer>
+    <script>
+      (() => {
+        const header = document.querySelector(".site-header");
+        const topGap = 14;
+
+        function targetTop(target) {
+          const headerHeight = header ? header.getBoundingClientRect().height : 0;
+          const pageY = target.getBoundingClientRect().top + window.scrollY;
+          return Math.max(0, pageY - headerHeight - topGap);
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", (event) => {
+            const hash = anchor.getAttribute("href");
+            if (!hash || hash === "#") return;
+
+            const target = document.querySelector(hash);
+            if (!target) return;
+
+            event.preventDefault();
+            history.pushState(null, "", hash);
+            window.scrollTo({
+              top: targetTop(target),
+              behavior: "smooth"
+            });
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
