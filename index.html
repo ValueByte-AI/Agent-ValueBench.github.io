@@ -48,6 +48,20 @@
         </div>
         <div class="hero-emblem" aria-label="Agent-ValueBench logo">
           <img src="assets/brand/agent-valuebench-wordmark.svg" alt="Agent-ValueBench logo">
+          <div class="hero-resource-links" aria-label="External resources">
+            <a class="resource-link" href="https://arxiv.org/abs/2605.10365" target="_blank" rel="noopener noreferrer">
+              <img src="assets/links/arxiv.svg" alt="" aria-hidden="true">
+              <span>Paper</span>
+            </a>
+            <a class="resource-link" href="https://github.com/ValueByte-AI/Agent-ValueBench" target="_blank" rel="noopener noreferrer">
+              <img src="assets/links/github.svg" alt="" aria-hidden="true">
+              <span>GitHub</span>
+            </a>
+            <a class="resource-link" href="https://huggingface.co/datasets/Value4AI/Agent-ValueBench" target="_blank" rel="noopener noreferrer">
+              <img src="assets/links/huggingface.svg" alt="" aria-hidden="true">
+              <span>HuggingFace</span>
+            </a>
+          </div>
         </div>
       </section>
 
@@ -196,6 +210,34 @@
         </figure>
       </section>
 
+      <section class="citation-section" id="citation" aria-labelledby="citation-title">
+        <div class="citation-card">
+          <div class="citation-topline">
+            <div class="citation-heading">
+              <p class="eyebrow">Citation</p>
+              <h2 id="citation-title">Cite Agent-ValueBench</h2>
+            </div>
+          </div>
+          <div class="citation-action-row">
+            <p class="citation-note">
+              If Agent-ValueBench is useful for your research, please consider citing our paper. We sincerely appreciate your support.
+            </p>
+            <button class="copy-citation" type="button" data-copy-target="agent-valuebench-bibtex">
+              Copy BibTeX
+            </button>
+          </div>
+          <pre><code id="agent-valuebench-bibtex">@misc{dong2026agentvaluebenchcomprehensivebenchmarkevaluating,
+      title={Agent-ValueBench: A Comprehensive Benchmark for Evaluating Agent Values}, 
+      author={Haonan Dong and Qiguan Feng and Kehan Jiang and Haoran Ye and Xin Zhang and Guojie Song},
+      year={2026},
+      eprint={2605.10365},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2605.10365}, 
+}</code></pre>
+        </div>
+      </section>
+
     </main>
 
     <footer class="site-footer">
@@ -214,6 +256,23 @@
           return Math.max(0, pageY - headerHeight - topGap);
         }
 
+        async function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+            return;
+          }
+
+          const textArea = document.createElement("textarea");
+          textArea.value = text;
+          textArea.setAttribute("readonly", "");
+          textArea.style.position = "fixed";
+          textArea.style.top = "-9999px";
+          document.body.appendChild(textArea);
+          textArea.select();
+          document.execCommand("copy");
+          document.body.removeChild(textArea);
+        }
+
         document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
           anchor.addEventListener("click", (event) => {
             const hash = anchor.getAttribute("href");
@@ -228,6 +287,29 @@
               top: targetTop(target),
               behavior: "smooth"
             });
+          });
+        });
+
+        document.querySelectorAll("[data-copy-target]").forEach((button) => {
+          button.addEventListener("click", async () => {
+            const target = document.getElementById(button.dataset.copyTarget);
+            if (!target) return;
+
+            const originalText = button.textContent;
+            try {
+              await copyText(target.textContent.trim());
+              button.textContent = "Copied";
+              button.classList.add("copied");
+              window.setTimeout(() => {
+                button.textContent = originalText;
+                button.classList.remove("copied");
+              }, 1800);
+            } catch {
+              button.textContent = "Copy failed";
+              window.setTimeout(() => {
+                button.textContent = originalText;
+              }, 1800);
+            }
           });
         });
       })();
